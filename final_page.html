@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抽選終了</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ページ全体の中央揃え */
+        body {
+            background-color: #f0f0f0;
+            color: #333;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .final-message {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            
+            /* 修正点：レインボーカラーのアニメーションを追加 */
+            background: linear-gradient(to right, #9b59b6, #3498db, #2ecc71, #f1c40f, #e67e22, #e74c3c);
+            -webkit-background-clip: text; /* テキストに背景をクリップ */
+            color: transparent; /* テキストを透明にする */
+            animation: rainbowText 8s ease infinite; /* アニメーション適用 */
+            background-size: 400% 100%; /* グラデーションを広げて滑らかに */
+        }
+
+        /* 💡 新しいキーフレームアニメーションの定義 */
+        @keyframes rainbowText {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .final-text {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* 抽選結果のコンテナ */
+        .results-container {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            max-width: 1200px;
+        }
+
+        /* 個々の抽選結果カード */
+        .result-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 5px;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            width: 200px;
+            height: auto;
+            overflow: hidden; 
+            
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        
+        /* ホバー時のアニメーション */
+        .result-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        /* 当選者と景品それぞれの情報をまとめるコンテナ */
+        .result-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            height: auto;
+            overflow: hidden; 
+        }
+
+        /* 画像のスタイル */
+        .result-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            transform: scale(1.0);
+            transform-origin: center center;
+            transition: transform 0.2s ease-in-out;
+            margin: 0; 
+        }
+
+        /* 名前テキストのスタイル */
+        .result-card .result-item p {
+            font-size: 18px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="final-container">
+        <h1 class="final-message">抽選がすべて終了しました！</h1>
+        <p class="final-text">
+            景品は当選者の所属する支店・営業所に配送させていただきます。<br>
+            到着までの間、楽しみにお待ちいただけたらと思います。
+        </p>
+        
+        <div id="results-container" class="results-container"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const resultsContainer = document.getElementById('results-container');
+            const storedResults = localStorage.getItem('lotteryResults');
+
+            if (storedResults) {
+                const results = JSON.parse(storedResults);
+
+                results.forEach((result) => {
+                    const card = document.createElement('div');
+                    card.classList.add('result-card');
+
+                    // 当選者情報をまとめるコンテナ
+                    const participantInfo = document.createElement('div');
+                    participantInfo.classList.add('result-item');
+                    
+                    // 当選者の名前をテキストとして追加
+                    const participantName = document.createElement('p');
+                    participantName.textContent = result.participantName;
+                    participantInfo.appendChild(participantName);
+
+                    // カードに当選者情報を追加
+                    card.appendChild(participantInfo);
+
+                    // 景品情報をまとめるコンテナ
+                    const giftInfo = document.createElement('div');
+                    giftInfo.classList.add('result-item');
+                    
+                    // 景品名画像を追加
+                    const giftNameImage = document.createElement('img');
+                    giftNameImage.src = `images/${result.giftNameImage}`;
+                    giftNameImage.alt = '景品名';
+                    giftInfo.appendChild(giftNameImage);
+
+                    // カードに景品情報を追加
+                    card.appendChild(giftInfo);
+
+                    resultsContainer.appendChild(card);
+                });
+
+            } else {
+                // データがない場合のメッセージ
+                resultsContainer.innerHTML = '<p>抽選結果が見つかりませんでした。</p>';
+            }
+        });
+    </script>
+</body>
+</html>
