@@ -116,13 +116,17 @@
     /* iPhone SE 横画面用のスタイル */
     @media screen and (max-width: 736px) and (orientation: landscape) {
         .final-message {
-            font-size: 1.2em; /* 見出しのサイズを小さくする */
-            margin-bottom: 5px; /* 下のマージンを減らす */
+            margin-bottom: 2px; /* 上部メッセージの下マージンを調整 */
+            font-size: 1.2em; /* 必要であれば文字サイズも調整 */
         }
         
         .final-text {
-            font-size: 0.5em; /* 本文のサイズを小さくする */
-            margin-bottom: 3px; /* 下のマージンを減らす */
+            margin-bottom: 5px; /* 上部本文の下マージンを調整 */
+            font-size: 0.8em; /* 必要であれば文字サイズも調整 */
+        }
+
+        .results-container {
+            margin-top: 5px; /* カードコンテナの上マージンを調整 */
         }
         
         .results-grid {
