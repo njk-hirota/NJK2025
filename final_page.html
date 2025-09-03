@@ -55,17 +55,6 @@
             gap: 5px;
             max-width: 1200px;
         }
-　　　　/* カードのアニメーションのキーフレームを定義 */
-    　　@keyframes fadeInRise {
-        　　from {
-            　　　opacity: 0;
-            　　　transform: translateY(20px);
-        　　　　　}
-        　　　to {
-            　　　opacity: 1;
-            　　　transform: translateY(0);
-        　　　　　}
-    　　}
 
         /* 個々の抽選結果カード */
         .result-card {
@@ -80,20 +69,10 @@
             gap: 2px;
             width: 200px;
             height: auto;
-            overflow: hidden;             
+            overflow: hidden; 
+            
             transition: box-shadow 0.3s ease, transform 0.3s ease;
-            opacity: 0; /* 最初は透明 */
-     　　   transform: translateY(20px); /* 最初は少し下に位置 */
-        　　transition: none !important; /* ホバーのtransitionを無効化 */
-        　　animation: fadeInRise 0.7s ease-out forwards;
-    　　　　}
-     
-    　　/* ホバーアニメーションを削除するか、再定義する */
-    　　.result-card:hover {
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        transform: scale(1.05); /* ホバー時のスケール効果 */
-        transition: transform 0.3s ease-out, box-shadow 0.3s ease; /* transitionを再定義 */
-    　　　　}
+        }
         
         /* 当選者と景品それぞれの情報をまとめるコンテナ */
         .result-item {
@@ -182,55 +161,51 @@
         
         <div id="results-container" class="results-container"></div>
     </div>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const resultsContainer = document.getElementById('results-container');
-        const storedResults = localStorage.getItem('lotteryResults');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const resultsContainer = document.getElementById('results-container');
+            const storedResults = localStorage.getItem('lotteryResults');
 
-        if (storedResults) {
-            const results = JSON.parse(storedResults);
+            if (storedResults) {
+                const results = JSON.parse(storedResults);
 
-            results.forEach((result, index) => { // ★この行は正しいです
-                const card = document.createElement('div');
-                card.classList.add('result-card');
+                results.forEach((result) => {
+                    const card = document.createElement('div');
+                    card.classList.add('result-card');
 
-                // 当選者情報をまとめるコンテナ
-                const participantInfo = document.createElement('div');
-                participantInfo.classList.add('result-item');
-                
-                // 当選者の名前をテキストとして追加
-                const participantName = document.createElement('p');
-                participantName.textContent = result.participantName;
-                participantInfo.appendChild(participantName);
+                    // 当選者情報をまとめるコンテナ
+                    const participantInfo = document.createElement('div');
+                    participantInfo.classList.add('result-item');
+                    
+                    // 当選者の名前をテキストとして追加
+                    const participantName = document.createElement('p');
+                    participantName.textContent = result.participantName;
+                    participantInfo.appendChild(participantName);
 
-                // カードに当選者情報を追加
-                card.appendChild(participantInfo);
+                    // カードに当選者情報を追加
+                    card.appendChild(participantInfo);
 
-                // 景品情報をまとめるコンテナ
-                const giftInfo = document.createElement('div');
-                giftInfo.classList.add('result-item');
-                
-                // 景品名画像を追加
-                const giftNameImage = document.createElement('img');
-                giftNameImage.src = `images/${result.giftNameImage}`;
-                giftNameImage.alt = '景品名';
-                giftInfo.appendChild(giftNameImage);
+                    // 景品情報をまとめるコンテナ
+                    const giftInfo = document.createElement('div');
+                    giftInfo.classList.add('result-item');
+                    
+                    // 景品名画像を追加
+                    const giftNameImage = document.createElement('img');
+                    giftNameImage.src = `images/${result.giftNameImage}`;
+                    giftNameImage.alt = '景品名';
+                    giftInfo.appendChild(giftNameImage);
 
-                // カードに景品情報を追加
-                card.appendChild(giftInfo);
+                    // カードに景品情報を追加
+                    card.appendChild(giftInfo);
 
-                // ▼▼▼ 修正点: この2行を追加してください ▼▼▼
-                resultsContainer.appendChild(card); // 作成したカードをコンテナに追加
-                card.style.animationDelay = `${index * 0.7}s`; // アニメーションの遅延を設定
-                // ▲▲▲ 修正点: ここまで追加 ▲▲▲
+                    resultsContainer.appendChild(card);
+                });
 
-            });
-
-        } else {
-            // データがない場合のメッセージ
-            resultsContainer.innerHTML = '<p>抽選結果が見つかりませんでした。</p>';
-        }
-    });
-</script>
+            } else {
+                // データがない場合のメッセージ
+                resultsContainer.innerHTML = '<p>抽選結果が見つかりませんでした。</p>';
+            }
+        });
+    </script>
 </body>
 </html>
