@@ -527,6 +527,12 @@ function handleStartButtonClick() {
         console.log("Intro image hidden.");
     }
 
+    const introAnimationContainer = document.getElementById('introAnimationContainer');
+    if (introAnimationContainer) {
+        introAnimationContainer.style.display = 'none';
+    }
+
+
     startButton.classList.add('hidden'); // スピニング中はボタンを非表示に
     startButton.style.pointerEvents = 'none'; // クリックできないようにする
     
