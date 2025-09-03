@@ -115,6 +115,10 @@
   
     /* iPhone SE 横画面用のスタイル */
     @media screen and (max-width: 736px) and (orientation: landscape) {
+        body {
+            justify-content: flex-start; /* これを追記 */
+        }
+        
         .final-message {
             margin-bottom: 2px; /* 上部メッセージの下マージンを調整 */
             font-size: 1.2em; /* 必要であれば文字サイズも調整 */
