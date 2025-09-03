@@ -39,18 +39,9 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-height: 80px;
+    max-height: 250px;
     margin-bottom: 0;
     overflow: hidden;
-}
-
-/* 導入画像のスタイル */
-#introImage {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-    max-height: 80px;
-    display: block;
 }
 
 /* 抽選結果表示エリアのスタイル */
@@ -516,4 +507,190 @@ body {
     object-fit: cover;
     z-index: -1;
     pointer-events: none;
+}
+/* ------------------------------------------------ */
+/* 新しいアニメーション用のスタイル */
+/* ------------------------------------------------ */
+
+/* 導入画像のコンテナスタイル */
+.top-image-container {
+    /* 既存のスタイルを維持し、idで上書きする */
+}
+
+/* ★変更点★: 静止画#introImageのスタイルは不要になるので削除します */
+/* #introImage {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: 80px;
+    display: block;
+} */
+
+
+/* アニメーションコンテナの新しいスタイル */
+#introAnimationContainer {
+    position: relative; /* 子要素の絶対配置の基準にする */
+    width: 100%;
+    height: 100vh; /* 画面全体を占めるように設定 */
+    overflow: hidden;
+    pointer-events: none; /* クリックを透過させる */
+}
+
+/* アニメーション画像の基本スタイル */
+.animated-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 15%; 
+    height: auto;
+    opacity: 0; /* 最初は非表示 */
+}
+
+/* 各画像に個別のランダムアニメーションを適用 */
+.animated-image:nth-child(1) { animation: randomMove1 10s infinite; }
+.animated-image:nth-child(2) { animation: randomMove2 12s infinite; }
+.animated-image:nth-child(3) { animation: randomMove3 9s infinite; }
+.animated-image:nth-child(4) { animation: randomMove4 11s infinite; }
+.animated-image:nth-child(5) { animation: randomMove5 13s infinite; }
+.animated-image:nth-child(6) { animation: randomMove6 8s infinite; }
+.animated-image:nth-child(7) { animation: randomMove7 15s infinite; }
+.animated-image:nth-child(8) { animation: randomMove8 10s infinite; }
+.animated-image:nth-child(9) { animation: randomMove9 12s infinite; }
+.animated-image:nth-child(10) { animation: randomMove10 9s infinite; }
+.animated-image:nth-child(11) { animation: randomMove11 11s infinite; }
+.animated-image:nth-child(12) { animation: randomMove12 13s infinite; }
+.animated-image:nth-child(13) { animation: randomMove13 8s infinite; }
+.animated-image:nth-child(14) { animation: randomMove14 15s infinite; }
+.animated-image:nth-child(15) { animation: randomMove15 10s infinite; }
+.animated-image:nth-child(16) { animation: randomMove16 12s infinite; }
+
+
+/* ランダムな動きを定義するキーフレーム */
+@keyframes randomMove1 {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    25% { transform: translate(-150%, -100%) scale(1); opacity: 1; }
+    50% { transform: translate(120%, -180%) scale(0.8); opacity: 0.5; }
+    75% { transform: translate(-100%, 150%) scale(1.2); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+}
+
+@keyframes randomMove2 {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    25% { transform: translate(-120%, -180%) scale(1.2); opacity: 1; }
+    50% { transform: translate(170%, -130%) scale(0.9); opacity: 0.7; }
+    75% { transform: translate(-140%, 160%) scale(1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+}
+
+@keyframes randomMove3 {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    25% { transform: translate(-160%, -120%) scale(1.1); opacity: 1; }
+    50% { transform: translate(110%, -180%) scale(0.8); opacity: 0.6; }
+    75% { transform: translate(-190%, 150%) scale(1.3); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+}
+
+@keyframes randomMove4 {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    25% { transform: translate(-140%, -110%) scale(1.3); opacity: 1; }
+    50% { transform: translate(180%, -160%) scale(0.7); opacity: 0.4; }
+    75% { transform: translate(-120%, 130%) scale(1.1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+}
+
+@keyframes randomMove5 {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    25% { transform: translate(-110%, -140%) scale(0.8); opacity: 0.9; }
+    50% { transform: translate(190%, -190%) scale(1.1); opacity: 0.5; }
+    75% { transform: translate(-130%, 110%) scale(1.5); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+}
+
+@keyframes randomMove6 {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    25% { transform: translate(-170%, -180%) scale(1.1); opacity: 1; }
+    50% { transform: translate(120%, -130%) scale(0.9); opacity: 0.7; }
+    75% { transform: translate(-150%, 190%) scale(1.2); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+}
+
+@keyframes randomMove7 {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    25% { transform: translate(-130%, -110%) scale(1.2); opacity: 1; }
+    50% { transform: translate(180%, -140%) scale(0.7); opacity: 0.6; }
+    75% { transform: translate(-110%, 180%) scale(1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+}
+
+@keyframes randomMove8 {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    25% { transform: translate(-190%, -130%) scale(1.4); opacity: 1; }
+    50% { transform: translate(140%, -180%) scale(0.9); opacity: 0.8; }
+    75% { transform: translate(-170%, 120%) scale(1.1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+}
+
+@keyframes randomMove9 {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    25% { transform: translate(-120%, -170%) scale(1); opacity: 1; }
+    50% { transform: translate(160%, -110%) scale(1.2); opacity: 0.7; }
+    75% { transform: translate(-180%, 150%) scale(0.8); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+}
+
+@keyframes randomMove10 {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    25% { transform: translate(-110%, -160%) scale(1.1); opacity: 1; }
+    50% { transform: translate(150%, -120%) scale(0.7); opacity: 0.5; }
+    75% { transform: translate(-190%, 140%) scale(1.3); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+}
+
+@keyframes randomMove11 {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    25% { transform: translate(-180%, -170%) scale(1.2); opacity: 1; }
+    50% { transform: translate(130%, -120%) scale(0.9); opacity: 0.6; }
+    75% { transform: translate(-150%, 180%) scale(1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+}
+
+@keyframes randomMove12 {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    25% { transform: translate(-140%, -190%) scale(1.1); opacity: 1; }
+    50% { transform: translate(110%, -130%) scale(0.8); opacity: 0.7; }
+    75% { transform: translate(-170%, 160%) scale(1.3); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+}
+
+@keyframes randomMove13 {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    25% { transform: translate(-190%, -140%) scale(1.5); opacity: 1; }
+    50% { transform: translate(120%, -110%) scale(1); opacity: 0.5; }
+    75% { transform: translate(-160%, 180%) scale(1.2); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+}
+
+@keyframes randomMove14 {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    25% { transform: translate(-130%, -190%) scale(1.3); opacity: 1; }
+    50% { transform: translate(180%, -120%) scale(0.7); opacity: 0.6; }
+    75% { transform: translate(-110%, 150%) scale(1.1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+}
+
+@keyframes randomMove15 {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    25% { transform: translate(-170%, -110%) scale(1.2); opacity: 1; }
+    50% { transform: translate(120%, -160%) scale(0.8); opacity: 0.8; }
+    75% { transform: translate(-190%, 130%) scale(1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+}
+
+@keyframes randomMove16 {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+    25% { transform: translate(-150%, -190%) scale(1.4); opacity: 1; }
+    50% { transform: translate(110%, -140%) scale(0.9); opacity: 0.7; }
+    75% { transform: translate(-180%, 170%) scale(1.1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
 }
