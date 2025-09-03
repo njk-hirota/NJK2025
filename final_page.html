@@ -115,6 +115,16 @@
   
     /* iPhone SE 横画面用のスタイル */
     @media screen and (max-width: 736px) and (orientation: landscape) {
+        .final-message {
+            font-size: 1.5em; /* 見出しのサイズを小さくする */
+            margin-bottom: 5px; /* 下のマージンを減らす */
+        }
+        
+        .final-text {
+            font-size: 0.9em; /* 本文のサイズを小さくする */
+            margin-bottom: 10px; /* 下のマージンを減らす */
+        }
+        
         .results-grid {
             grid-template-columns: repeat(3, 1fr); /* 3列表示に変更 */
             gap: 5px;
