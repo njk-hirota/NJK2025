@@ -116,22 +116,23 @@
     /* iPhone SE 横画面用のスタイル */
     @media screen and (max-width: 736px) and (orientation: landscape) {
         .results-grid {
-            grid-template-columns: repeat(2, 1fr); /* 2列表示にするとより見やすくなります */
+            grid-template-columns: repeat(3, 1fr); /* 3列表示に変更 */
+            gap: 5px;
         }
 
         .result-card {
-            width: 150px; /* カードの幅を小さく調整 */
-            height: 200px; /* カードの高さを調整 */
+            width: 100px; /* カードの幅をさらに小さく */
+            height: 150px; /* カードの高さをさらに小さく */
             padding: 2px;
             gap: 2px;
         }
 
         .result-card p {
-            font-size: 0.8em; /* テキストを小さくする */
+            font-size: 0.7em; /* テキストをさらに小さく */
         }
         
         .result-card img {
-            max-width: 100px; /* 画像のサイズを小さく調整 */
+            max-width: 80px; /* 画像のサイズをさらに小さく */
         } 
     </style>
 </head>
