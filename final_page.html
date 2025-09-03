@@ -190,7 +190,7 @@
         if (storedResults) {
             const results = JSON.parse(storedResults);
 
-            results.forEach((result, index) => { // ★修正点: indexを引数に追加
+            results.forEach((result, index) => { // ★この行は正しいです
                 const card = document.createElement('div');
                 card.classList.add('result-card');
 
@@ -219,10 +219,10 @@
                 // カードに景品情報を追加
                 card.appendChild(giftInfo);
 
-                // ★修正点: ここから追加
-                resultsContainer.appendChild(card);
-                card.style.animationDelay = `${index * 0.7}s`;
-                // ★修正点: ここまで追加
+                // ▼▼▼ 修正点: この2行を追加してください ▼▼▼
+                resultsContainer.appendChild(card); // 作成したカードをコンテナに追加
+                card.style.animationDelay = `${index * 0.7}s`; // アニメーションの遅延を設定
+                // ▲▲▲ 修正点: ここまで追加 ▲▲▲
 
             });
 
