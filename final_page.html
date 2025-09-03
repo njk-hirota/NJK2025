@@ -5,152 +5,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>抽選終了</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* ページ全体の中央揃え */
-        body {
-            background-color: #f0f0f0;
-            color: #333;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-        }
+   <style>
+    /* ページ全体の中央揃え */
+    body {
+        background-color: #f0f0f0;
+        color: #333;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+    }
 
-        .final-message {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 20px;
-            
-            /* 修正点：レインボーカラーのアニメーションを追加 */
-            background: linear-gradient(to right, #9b59b6, #3498db, #2ecc71, #f1c40f, #e67e22, #e74c3c);
-            -webkit-background-clip: text; /* テキストに背景をクリップ */
-            color: transparent; /* テキストを透明にする */
-            animation: rainbowText 3s ease infinite; /* アニメーション適用 */
-            background-size: 400% 100%; /* グラデーションを広げて滑らかに */
-        }
-
-        /* 💡 新しいキーフレームアニメーションの定義 */
-        @keyframes rainbowText {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-
-        .final-text {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        /* 抽選結果のコンテナ */
-        .results-container {
-            margin-top: 30px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 5px;
-            max-width: 1200px;
-        }
-
-        /* 個々の抽選結果カード */
-        .result-card {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 5px;
-            display: flex;
-            flex-direction: column; 
-            align-items: center;
-            justify-content: center;
-            gap: 2px;
-            width: 200px;
-            height: auto;
-            overflow: hidden; 
-            
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
-        }
+    .final-message {
+        font-size: 2.5em;
+        font-weight: bold;
+        margin-bottom: 20px;
         
-        /* 当選者と景品それぞれの情報をまとめるコンテナ */
-        .result-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            width: 100%;
-            height: auto;
-            overflow: hidden; 
-        }
+        /* 修正点：レインボーカラーのアニメーションを追加 */
+        background: linear-gradient(to right, #9b59b6, #3498db, #2ecc71, #f1c40f, #e67e22, #e74c3c);
+        -webkit-background-clip: text; /* テキストに背景をクリップ */
+        color: transparent; /* テキストを透明にする */
+        animation: rainbowText 3s ease infinite; /* アニメーション適用 */
+        background-size: 400% 100%; /* グラデーションを広げて滑らかに */
+    }
 
-        /* 画像のスタイル */
-        .result-card img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-            margin-bottom: 5px;
-            transform: scale(1.0);
-            transform-origin: center center;
-            transition: transform 0.2s ease-in-out;
-            margin: 0; 
-        }
+    /* 💡 新しいキーフレームアニメーションの定義 */
+    @keyframes rainbowText {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
+    }
 
-        /* 名前テキストのスタイル */
-        .result-card .result-item p {
-            font-size: 18px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin: 0;
-        }
-  
-    /* iPhone SE 横画面用のスタイル */
-    @media screen and (max-width: 736px) and (orientation: landscape) {
-        body {
-            justify-content: flex-start; /* これを追記 */
-        }
+    .final-text {
+        font-size: 1.2em;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    /* 抽選結果のコンテナ */
+    .results-container {
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+        max-width: 1200px;
+    }
+
+    /* 個々の抽選結果カード */
+    .result-card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 5px;
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        width: 200px;
+        height: auto;
+        overflow: hidden; 
         
-        .final-message {
-            margin-bottom: 2px; /* 上部メッセージの下マージンを調整 */
-            font-size: 1.2em; /* 必要であれば文字サイズも調整 */
-        }
-        
-        .final-text {
-            margin-bottom: 7px; /* 上部本文の下マージンを調整 */
-            font-size: 0.4em; /* 必要であれば文字サイズも調整 */
-        }
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    
+    /* 当選者と景品それぞれの情報をまとめるコンテナ */
+    .result-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        height: auto;
+        overflow: hidden; 
+    }
 
-        .results-container {
-            margin-top: 7px; /* カードコンテナの上マージンを調整 */
-        }
-        
-        .results-grid {
-            grid-template-columns: repeat(3, 1fr); /* 3列表示に変更 */
-            gap: 1px;
-        }
+    /* 画像のスタイル */
+    .result-card img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        transform: scale(1.0);
+        transform-origin: center center;
+        transition: transform 0.2s ease-in-out;
+        margin: 0; 
+    }
 
-        .result-card {
-            width: 100px; /* カードの幅をさらに小さく */
-            height: 32px; /* カードの高さをさらに小さく */
-            padding: 1px;
-            gap: 1px;
-        }
+    /* 名前テキストのスタイル */
+    .result-card .result-item p {
+        font-size: 18px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0;
+    }
 
-        .result-card .result-item p {
-            font-size: 0.6em; /* この値を調整してサイズを変更してください */
-            margin: 1;
-        }
-        
-        .result-card img {
-            max-width: 100px; /* 画像のサイズをさらに小さく */
-            
-        } 
-         /* ▼▼▼ 紙吹雪のスタイルをここに追加 ▼▼▼ */
+    /* 💡 紙吹雪のスタイルを@mediaクエリの外に移動 */
     .confetti {
         position: absolute; /* 親要素に対して絶対位置で配置 */
+        top: 0;
         width: 10px;
         height: 10px;
         background-color: #ffcc00; /* デフォルトの色（JavaScriptで上書きされます） */
@@ -171,7 +131,49 @@
             opacity: 0;
         }
     }
-    </style>
+    
+    /* iPhone SE 横画面用のスタイル */
+    @media screen and (max-width: 736px) and (orientation: landscape) {
+        body {
+            justify-content: flex-start;
+        }
+        
+        .final-message {
+            margin-bottom: 2px;
+            font-size: 1.2em;
+        }
+        
+        .final-text {
+            margin-bottom: 7px;
+            font-size: 0.4em;
+        }
+
+        .results-container {
+            margin-top: 7px;
+        }
+        
+        .results-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+        }
+
+        .result-card {
+            width: 100px;
+            height: 32px;
+            padding: 1px;
+            gap: 1px;
+        }
+
+        .result-card .result-item p {
+            font-size: 0.6em;
+            margin: 1;
+        }
+        
+        .result-card img {
+            max-width: 100px;
+        }
+    }
+</style>
 </head>
 <body>
 
