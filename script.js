@@ -74,7 +74,7 @@ const allParticipants = [
     { name: "山本 寧々", image: "68.png", "nameImage": "画像68.png" },
     { name: "上田 将太", image: "69.png", "nameImage": "画像69.png" },
     { name: "浅野 領太", image: "70.png", "nameImage": "画像70.png" },
-    { name: "芥川 隆太", image: "71.png", "nameImage": "画像71.png" },
+    //{ name: "芥川 隆太", image: "71.png", "nameImage": "画像71.png" },
     { name: "鈴木 亮広", image: "72.png", "nameImage": "画像72.png" },
     { name: "佐賀 雄樹", image: "73.png", "nameImage": "画像73.png" },
     { name: "菊池 明日香", image: "74.png", "nameImage": "画像74.png" },
