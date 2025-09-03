@@ -148,6 +148,29 @@
             max-width: 100px; /* 画像のサイズをさらに小さく */
             
         } 
+         /* ▼▼▼ 紙吹雪のスタイルをここに追加 ▼▼▼ */
+    .confetti {
+        position: absolute; /* 親要素に対して絶対位置で配置 */
+        width: 10px;
+        height: 10px;
+        background-color: #ffcc00; /* デフォルトの色（JavaScriptで上書きされます） */
+        border-radius: 50%;
+        opacity: 0;
+        pointer-events: none; /* マウスイベントを無効化 */
+        animation: confetti-fall linear infinite;
+        z-index: 9999; /* 他の要素の上に表示 */
+    }
+
+    @keyframes confetti-fall {
+        0% {
+            transform: translateY(0) rotateZ(0deg);
+            opacity: 0.8;
+        }
+        100% {
+            transform: translateY(100vh) rotateZ(360deg);
+            opacity: 0;
+        }
+    }
     </style>
 </head>
 <body>
@@ -206,6 +229,40 @@
                 resultsContainer.innerHTML = '<p>抽選結果が見つかりませんでした。</p>';
             }
         });
+
+        /* ▼▼▼ 紙吹雪生成のJavaScriptをここに追加 ▼▼▼ */
+
+    // 紙吹雪の色リスト
+    const confettiColors = ['#f44336', '#e91e63', '#9c27b0', '#3f51b5', '#2196f3', '#009688', '#8bc34a', '#ffeb3b', '#ff9800', '#ff5722'];
+
+    // 紙吹雪を生成する関数
+    function createConfetti() {
+        const confettiCount = 100; // 生成する紙吹雪の数
+        for (let i = 0; i < confettiCount; i++) {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+
+            // ランダムな位置と色、サイズ、アニメーション時間を設定
+            const size = Math.random() * 8 + 4; // 4px〜12px
+            confetti.style.width = `${size}px`;
+            confetti.style.height = `${size}px`;
+            confetti.style.left = `${Math.random() * 100}vw`; // 0%から100%の横位置
+            confetti.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+            confetti.style.animationDuration = `${Math.random() * 3 + 2}s`; // 2秒〜5秒
+
+            document.body.appendChild(confetti);
+
+            // アニメーション終了後に要素を削除
+            confetti.addEventListener('animationend', () => {
+                confetti.remove();
+            });
+        }
+    }
+
+    // ページが完全に読み込まれたときに紙吹雪を生成
+    window.addEventListener('load', createConfetti);
+
+    /* ▲▲▲ ここまで追加 ▲▲▲ */
     </script>
 </body>
 </html>
