@@ -11,7 +11,7 @@ const allParticipants = [
     { name: "中尾 恵太", image: "5.png", nameImage: "画像5.png" },
     { name: "草別 秀", image: "6.png", nameImage: "画像6.png" },
     { name: "高橋 克巳", image: "7.png", nameImage: "画像7.png" },
-    { name: "小笠原 一彦", image: "8.png", nameImage: "画像8.png" },
+    //{ name: "小笠原 一彦", image: "8.png", nameImage: "画像8.png" },
     { name: "尾﨑 誠", image: "9.png", nameImage: "画像9.png" },
     { name: "渡邊 龍和", image: "10.png", nameImage: "画像10.png" },
     { name: "小田 翔矢", image: "11.png", nameImage: "画像11.png" },
